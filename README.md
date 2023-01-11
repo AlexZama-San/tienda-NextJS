@@ -34,3 +34,28 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+Para correr la aplicacion localmente se necesita la Base de datos
+```
+docker-compose up -d
+```
+
+el -d, significa __detached__ o __desconectado__ y es para que no se cierre la terminal al correr el comando
+
+```
+Para conectarse a la base de datos se recomienda utilizar el cliente de mongoDBcompass
+```
+mongoDBcompass: https://www.mongodb.com/try/download/compass
+
+```
+Para acceder a la conexion de la base de datos se necesita el siguiente string de conexion
+```
+mongodb://localhost:27017
+
+```
+
+## Configurar las variables de entorno
+Renombrar el archivo __.env.template__ a __.env__ y configurar las variables de entorno
+
+```
