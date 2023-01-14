@@ -7,7 +7,7 @@ interface Props {
     title: string
     pageDescription: string
     icon?: JSX.Element
-    children: JSX.Element
+    children: JSX.Element | JSX.Element[]
 }
 
 export const AdminLayout: FC<Props> = ({children, title, pageDescription, icon}) => {
@@ -27,7 +27,7 @@ export const AdminLayout: FC<Props> = ({children, title, pageDescription, icon})
             <Box display='flex' flexDirection='column'>
                 <Typography variant="h1" component='h1'>
                     {icon}
-                    {title}
+                    {' '} {title}
                 </Typography>
                 <Typography variant="h2" sx={{mb: 1}}>{pageDescription}</Typography>
             </Box>

@@ -61,7 +61,7 @@ const HistoryPage: NextPage<Props> = ({orders = []}) => {
   return (
     <ShopLayout title={'Historial de compras'} pageDescription={'Historial de compras del cliente'} >
         <Typography variant='h1' component='h1'>Historial de compras</Typography>
-        <Grid container>
+        <Grid container className='fadeIn'>
             <Grid item xs={12} sx={{height: 650, width: '100%'}}>
                 <DataGrid rows={rows} columns={columns} pageSize={10} rowsPerPageOptions={[10]} />
             </Grid>

@@ -6,12 +6,12 @@ import Producto from '../../../models/producto';
 
 type Data = {
     numberOfOrders: number
-    PaidOrders: number // isPaid true
+    paidOrders: number // isPaid true
     notPaidOrders: number
     numberOfClients: number // solo clientes
     numberOfProducts: number
-    ProductsWithNoStock: number
-    ProductsWithLowStock: number // menos de 10
+    productsWithNoStock: number
+    productsWithLowStock: number // menos de 10
 
 }
 
@@ -28,12 +28,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
         const [
             numberOfOrders,
-            PaidOrders,
+            paidOrders,
             notPaidOrders,
             numberOfClients,
             numberOfProducts,
-            ProductsWithNoStock,
-            ProductsWithLowStock,
+            productsWithNoStock,
+            productsWithLowStock,
         ] = await Promise.all([
             Order.countDocuments(),
             Order.countDocuments({isPaid: true}),
@@ -49,11 +49,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
     res.status(200).json({
         numberOfOrders,
-        PaidOrders,
+        paidOrders,
         notPaidOrders,
         numberOfClients,
         numberOfProducts,
-        ProductsWithNoStock,
-        ProductsWithLowStock,
+        productsWithNoStock,
+        productsWithLowStock,
     })
 }

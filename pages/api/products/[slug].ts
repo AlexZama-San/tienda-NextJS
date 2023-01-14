@@ -8,7 +8,9 @@ import Producto from '../../../models/producto'
 type Data = 
 | {message: string}
 | IProduct[]
+| IProduct
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default function (req: NextApiRequest, res: NextApiResponse<Data>) {
     switch (req.method) {
         case 'GET':
@@ -30,11 +32,15 @@ async function getProductBySlug(req: NextApiRequest, res: NextApiResponse<Data>)
     
         try {
             await connect()
-            const product = await Producto.find({ slug }).lean()
+            const product = await Producto.findOne({ slug }).lean()
             await disconnect()
-            if (product.length === 0) {
+            if (!product) {
                 return res.status(404).json({ message: 'Product not found' })
             }
+
+            product.images = product.images.map(image => {
+                return image.includes('http') ? image : `${process.env.HOST_NAME}products/${image}`
+            })
 
             return res.status(200).json(product)
             
